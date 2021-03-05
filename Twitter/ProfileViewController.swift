@@ -31,10 +31,9 @@ class ProfileViewController: UIViewController {
                 self.tagLineLabel.text = "No tagline!"
             }
             
-            let status = user["status"] as! NSDictionary
             let followingCount = user["friends_count"] as! Int
             let followersCount = user["followers_count"] as! Int
-            let tweetCount = status["retweet_count"] as! Int
+            let tweetCount = user["statuses_count"] as! Int
             var endFollowerStr = "followers"
             var endTweetStr = "tweets ."
             
@@ -57,7 +56,6 @@ class ProfileViewController: UIViewController {
                 self.profileImageView.image = UIImage(data: imageData)
                 self.profileImageView.layer.cornerRadius = self.profileImageView.bounds.width / 2
             }
-            
         }, failure: { (error) in
             print("error getting user info: \(error)")
         })
